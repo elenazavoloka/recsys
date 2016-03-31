@@ -23,3 +23,4 @@ n_lines=4
 df_users=load_data('C:/Users/elena/Desktop/work/recsys challenge//data/users.csv',n_lines) # length 1 500 001
 df_items=load_data('C:/Users/elena/Desktop/work/recsys challenge/data/items.csv',n_lines) #length  1 358 099    
 #calc_item_user_similarity(df_users, df_items)
+# add test comment to check branch
