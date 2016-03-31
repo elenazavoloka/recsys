@@ -34,7 +34,7 @@ def calc_n_items_per_user(inp_dict):
        n_items_user[i]=len(inp_dict[users[i]])
     return  n_items_user
 
-def calc_similarity_items(X,Y):
+def calc_items_similarity(X,Y):
     import pandas as pd
     diff = pd.DataFrame(np.nan, index=[0], columns=['title', 'career_level','discipline_id','industry_id', 'country','region','latitude','longitude','employment' ,'tags','created_at'])
     # compare cont fiends
@@ -70,7 +70,7 @@ for i in range(len(df_items)):
     for j in range(len(df_items)):
         X=df_items.iloc[i,:]
         Y=df_items.iloc[j,:]
-        diff_XY=calc_similarity_items(X,Y)
+        diff_XY=calc_items_similarity(X,Y)
         list_XY_title[i,j]=diff_XY['title']
         list_XY_career_level[i,j]=diff_XY['career_level']
         list_XY_discipline_id[i,j]=diff_XY['discipline_id']
