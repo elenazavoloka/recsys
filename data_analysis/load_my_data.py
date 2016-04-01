@@ -30,7 +30,11 @@ def load_data(file_path, n_lines):
         if 'NULL' in values:
             for ind_null in range(len(values)):
                 if values[ind_null]=='NULL':
-                    values[ind_null]=float("nan")            
+                    values[ind_null]=float("nan")
+        if '' in values:
+         for ind_empt in range(len(values)):
+                if values[ind_empt]=='':
+                    values[ind_empt]=float("nan")            
         #    print len(values)
         df.iloc[i,:]=values
     return df    

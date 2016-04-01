@@ -11,13 +11,10 @@ import numpy as np
 from  SimCalc import calc_sim_subset, calc_similarity_dict
 from SimCalc.calc_sim_subset import similarity_matr_subset_users
 #from  SimCalc.calc_similarity_dict import calc_similarity_dict
-from load_my_data import load_data, make_dict_inter
+from data_analysis.load_my_data import load_data, make_dict_inter
 import matplotlib.pyplot as plt
 import time
-n_lines=30000
-#df_users=load_data('../data/users.csv',n_lines) # length 1 500 001
-#df_items=load_data('../data/items.csv',n_lines) #length  1 358 099
-#df_impressions=load_data('../data/impressions.csv',n_lines) # 10 130 411
+n_lines=30
 df_interactions=load_data('../data/interactions.csv',n_lines) # length 8 826 679
 def file_len(fname):
     with open(fname) as f:

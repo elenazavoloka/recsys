@@ -6,21 +6,29 @@ Created on Thu Mar 31 10:06:46 2016
 """
 
 def calc_item_user_similarity(user_inf, item_inf):
-    # compare the same coloums:
+    from simcalc.calc_per_type_similarity import calc_per_type_similarity
+    # Function compare the same coloums in items and users
+    
+    # define indexes to use
     # define the index of the same colomns between users and items
     user_col_index=['jobroles','career_level','discipline_id','industry_id','country','region','jobroles']
-    item_col_index=['title','career_level','discipline_id','industry_id','country,region,tags']
+    item_col_index=['title','career_level','discipline_id','industry_id','country','region','tags']
+    # define continuous fields
     cont_var=[1]
+    # define categorical fields
     cat_var=[2,3,4,5,6]
+    # define list fields
     list_var=[0]
-    diff=calc_per_type_similarity(user_inf[user_col_index],item_inf[item_col_index],cont_var, cat_var,list_var)
+    # extract fields
+    X=user_inf[user_col_index]
+    Y=item_inf[item_col_index]
+    
+    # calculate similarity
+    diff=calc_per_type_similarity(X,Y,cont_var, cat_var,list_var)  
+   
+    # rename columns   
+    total_ind_list=cont_var+cat_var+list_var
+    new_col_names=[user_col_index[i] for i in total_ind_list]
+    diff.columns=new_col_names
+    return diff
 #    
-import sys
-sys.path.append('C:/Users/elena/Desktop/work/recsys challenge/recsys')
-from data_analysis.load_my_data import load_data
-
-n_lines=4
-df_users=load_data('C:/Users/elena/Desktop/work/recsys challenge//data/users.csv',n_lines) # length 1 500 001
-df_items=load_data('C:/Users/elena/Desktop/work/recsys challenge/data/items.csv',n_lines) #length  1 358 099    
-#calc_item_user_similarity(df_users, df_items)
-# add test comment to check branch
